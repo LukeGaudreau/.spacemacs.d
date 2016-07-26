@@ -28,7 +28,7 @@ values."
      emacs-lisp
      git
      ;; markdown
-     ;; org
+     org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -255,8 +255,104 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;; git
   (setq magit-repository-directories '("~/Projects/"))
-  )
 
+  ;; org
+  (with-eval-after-load 'org
+    ;; Org general settings
+    (setq org-directory "~/Dropbox/Notes/"
+          org-agenda-files '("~/Dropbox/Notes/Work.org")
+          org-agenda-skip-deadline-if-done t
+          org-deadline-warning-days 0
+          org-src-tab-acts-natively t
+          org-src-fontify-natively t
+          org-tags-match-list-sublevels nil
+          ;;    org-use-tag-inheritance '(Project Note)
+          org-hide-emphasis-markers)
+    (setq org-file-apps
+          (quote((auto-mode . emacs)
+                 ("\\.mm\\'" . default)
+                 ("\\.x?html?\\'" . "open %s")
+                 ("\\.pdf\\'" . "open %s"))
+                ))
+    ;; Org Agenda
+    (setq org-agenda-custom-commands
+          (quote (("N" "Notes" tags "Note"
+                   ((org-agenda-overriding-header "Notes:")
+                    (org-tags-match-list-sublevels t)))
+                  ("I" "Inbox"
+                   ((tags-todo "Category=\"Inbox\""
+                               ((org-agenda-overriding-header "Inbox:")
+                                (org-tags-match-list-sublevels nil)))))
+                  ("T" "Today"
+                   ((agenda "/-DONE"
+                            ((org-agenda-overriding-header "Due Today")
+                             (org-agenda-entry-types '(:deadline :scheduled))
+                             (org-agenda-span 1)
+                             ))
+                    (tags-todo "/NEXT"
+                               ((org-agenda-overriding-header "Next Actions:")
+                                (org-agenda-ignore-scheduled t)
+                                (org-agenda-tags-todo-honor-ignore-options t)
+                                (org-agenda-todo-ignore-deadlines t)
+                                (org-agenda-todo-ignore-scheduled t)
+                                ))
+                    (tags-todo "Category=\"Inbox\""
+                               ((org-agenda-overriding-header "Inbox:")
+                                (org-tags-match-list-sublevels nil)))
+                    ))
+                  ("W" "Weekly Review"
+                   ((agenda "/-DONE"
+                            ((org-agenda-entry-types '(:deadline :scheduled))))
+                    (tags-todo "Category=\"Inbox\""
+                               ((org-agenda-overriding-header "Tasks to Refile:")
+                                (org-tags-match-list-sublevels nil)))
+                    (org-agenda-list-stuck-projects)
+                    (tags-todo "/NEXT"
+                               ((org-agenda-overriding-header "Next Actions:")))
+                    (tags-todo "/WAITING"
+                               ((org-agenda-overriding-header "Waiting:")))
+                    (tags-todo "/TODO"
+                               ((org-agenda-overriding-header "Tasks:")))
+                    ))
+                  )))
+    (setq org-stuck-projects
+          '("+LEVEL=1/-DONE"
+            ("NEXT")
+            nil ""))
+
+    ;; Org Todo
+    (setq org-todo-keywords
+          (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+                  (sequence "WAITING(w@)" "|" "SOMEDAY" "BACKLOG(b@)" "PHONE" "MEETING"))))
+    ;; Org Tags
+    (setq org-tag-alist
+          '(("Project" . ?p)
+            ("Goal" . ?g)
+            ))
+    ;; Org Capture and Refile
+    (require 'org-protocol)
+    (require 'org-notmuch)
+    (setq org-refile-targets (quote ((nil :maxlevel . 9)
+                                     (org-agenda-files :maxlevel . 3)))
+          org-refile-use-outline-path t
+          org-outline-path-complete-in-steps nil
+          org-refile-allow-creating-parent-nodes (quote confirm))
+    (setq org-capture-templates
+          (quote (
+                  ("t" "Todo" entry (file+headline "~/Dropbox/Notes/Work.org" "Inbox")
+                   "* TODO %?\n%U\n%a\n")
+                  ("x" "org-protocol" entry (file "~/Dropbox/Notes/Research.org")
+                   "* %? :web: \n%c\n%U\n%i\n")
+                  )))
+    ;; Org Reveal
+    (require 'ox-reveal)
+    (setq org-reveal-root ""
+          org-reveal-slide-number nil)
+    ;; Org Export
+    (setq org-export-with-toc nil
+          org-export-with-section-numbers nil)
+    )
+  )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
