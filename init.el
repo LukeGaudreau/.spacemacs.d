@@ -343,13 +343,28 @@ you should place your code here."
                    "* %? :web: \n%c\n%U\n%i\n")
                   )))
     ;; Org Reveal
-    (require 'ox-reveal)
-    (setq org-reveal-root ""
-          org-reveal-slide-number nil)
+    ;; (require 'ox-reveal)
+    ;; (setq org-reveal-root ""
+    ;;       org-reveal-slide-number nil)
     ;; Org Export
     (setq org-export-with-toc nil
           org-export-with-section-numbers nil)
     )
+  ;; functions to show custom agenda views
+  (defun org-agenda-show-today (&optional arg)
+    (interactive "P")
+    (org-agenda arg "T"))
+  (defun org-agenda-show-inbox (&optional arg)
+    (interactive "P")
+    (org-agenda arg "I"))
+  (defun org-agenda-show-weekly (&optional arg)
+    (interactive "P")
+    (org-agenda arg "W"))
+  (spacemacs/set-leader-keys
+    "ot" 'org-agenda-show-today
+    "oi" 'org-agenda-show-inbox
+    "ow" 'org-agenda-show-weekly
+    "oc" 'org-capture)
   )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
