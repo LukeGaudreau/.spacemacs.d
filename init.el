@@ -264,6 +264,7 @@ you should place your code here."
     (setq org-directory "~/Dropbox/Notes/"
           org-agenda-files '("~/Dropbox/Notes/Work.org")
           org-agenda-skip-deadline-if-done t
+          org-agenda-skip-scheduled-if-done t
           org-agenda-window-setup 'only-window
           org-deadline-warning-days 0
           org-src-tab-acts-natively t
