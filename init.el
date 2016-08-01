@@ -28,6 +28,8 @@ values."
      emacs-lisp
      git
      ;; markdown
+     (notmuch :variables
+              notmuch-command "/usr/local/bin/notmuch")
      org
      ;; (shell :variables
      ;;        shell-default-height 30
