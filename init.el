@@ -25,9 +25,10 @@ values."
      ;; ----------------------------------------------------------------
      ;; auto-completion
      ;; better-defaults
+     deft
      emacs-lisp
      git
-     ;; markdown
+     markdown
      (notmuch :variables
               notmuch-command "/usr/local/bin/notmuch")
      org
@@ -259,6 +260,9 @@ you should place your code here."
 
   ;; git
   (setq magit-repository-directories '("~/Projects/"))
+
+  ;; deft
+  (setq deft-directory "~/Dropbox/notes")
 
   ;; org
   (with-eval-after-load 'org

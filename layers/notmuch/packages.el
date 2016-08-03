@@ -16,7 +16,7 @@
   (use-package notmuch
     :init
     (progn
-      (spacemacs/set-leader-keys "a n" 'notmuch))
+      (spacemacs/set-leader-keys "a m" 'notmuch))
     :config
     (progn
       (evilified-state-evilify-map notmuch-hello-mode-map
