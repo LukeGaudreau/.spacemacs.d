@@ -51,10 +51,11 @@
   (custom-theme-set-faces
    'halcyon-light
    `(default ((t (:stipple nil :background ,halcyon-white :foreground ,halcyon-black :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal))))
+   `(variable-pitch ((t (:family "Quattrocento" :height 1.2))))
    `(italic ((t (:slant italic))))
    `(cursor ((t (:background ,halcyon-red))))
    `(button ((t (:underline t))))
-   `(fringe ((t (:foreground ,halcyon-dark-gray :background ,halcyon-gray))))
+   `(fringe ((t (:foreground ,halcyon-dark-gray :background ,halcyon-white))))
    `(linum ((t (:foreground ,halcyon-black))))
    `(region ((t (:background ,halcyon-dark-white :inherit t))))
    `(hl-line ((t (:background ,halcyon-gray :inherit t))))
@@ -125,7 +126,7 @@
    `(mmm-code-submode-face ((t (:background ,halcyon-white))))
    ;; org-mode
    `(org-document-title ((t (:foreground ,halcyon-dark-blue :weight normal :underline nil :height 1.4))))
-   `(org-level-1 ((t (:foreground ,halcyon-dark-black :weight normal :height 1.2))))
+   `(org-level-1 ((t (:foreground ,halcyon-dark-black :weight normal))))
    `(org-level-2 ((t (:foreground ,halcyon-dark-black :weight normal))))
    `(org-level-3 ((t (:foreground ,halcyon-dark-black :weight normal))))
    `(org-level-4 ((t (:foreground ,halcyon-black :weight normal :slant normal))))
@@ -133,15 +134,16 @@
    `(org-level-6 ((t (:foreground ,halcyon-dark-gray :weight normal))))
    `(org-level-7 ((t (:foreground ,halcyon-dark-gray :weight normal))))
    `(org-date ((t (:foreground ,halcyon-blue))))
-   `(org-agenda-date ((t (:foreground ,halcyon-dark-blue))))
-   `(org-agenda-date-weekend ((t (:foreground ,halcyon-blue :weight normal))))
-   `(org-agenda-structure ((t (:foreground ,halcyon-black :weight normal :height 1.2))))
+   `(org-agenda-date ((t (:foreground ,halcyon-black))))
+   `(org-agenda-date-today ((t (:weight bold))))
+   `(org-agenda-date-weekend ((t (:foreground ,halcyon-dark-gray :weight normal))))
+   `(org-agenda-structure ((t (:foreground ,halcyon-black :weight normal :height 1.4))))
    `(org-time-grid ((t (:foreground ,halcyon-black))))
    `(org-table ((t (:foreground ,halcyon-black))))
-   `(org-todo ((t (:foreground ,halcyon-dark-red))))
+   `(org-todo ((t (:foreground ,halcyon-dark-green))))
    `(org-warning ((t (:foreground ,halcyon-dark-red))))
    `(org-upcoming-deadline ((t (:foreground ,halcyon-dark-gray))))
-   `(org-done ((t (:foreground ,halcyon-dark-green))))
+   `(org-done ((t (:foreground ,halcyon-dark-blue))))
    `(org-agenda-done ((t (:inherit org-done))))
    `(org-agenda-current-time ((t (:foreground ,halcyon-dark-red))))
    `(org-tag ((t (:foreground ,halcyon-dark-gray :height 1.0 :weight normal))))
@@ -224,7 +226,8 @@
    `(deft-header-face ((t (:foreground ,halcyon-dark-blue :bold t))))
    `(deft-title-face ((t (:foreground ,halcyon-dark-black :bold t))))
    `(deft-time-face ((t (:foreground ,halcyon-dark-green :bold nil))))
-
+   ;; Notmuch
+   `(notmuch-search-matching-authors ((t (:foreground ,halcyon-dark-gray :slant italic))))
    ;; ERC
    `(erc-notice-face ((t (:inherit ,font-lock-comment-face))))
 
