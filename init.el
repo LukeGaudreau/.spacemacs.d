@@ -33,7 +33,6 @@ values."
    '(
      yaml
      python
-     ;; slack
      rust
      javascript
      ruby
@@ -350,19 +349,6 @@ you should place your code here."
   (spacemacs/set-leader-keys
     "od" 'zeal-at-point)
 
-  ;; slack
-
-  ;; (slack-register-team
-  ;;  :name "bclibraries"
-  ;;  :default t
-  ;;  :client-id "25231912357.361611965683"
-  ;;  :client-secret "d095a9d51a2bb9747f0a418ec914e9e4"
-  ;;  :token "xoxp-25231912357-226958789126-362623595254-3568bb5a3d983d1e4540b8d1113b05ed"
-  ;;  :subscribed-channels '(general miraspace))
-  ;; (setq slack-buffer-emojify t) ;; if you want to enable emoji, default nil
-  ;; (setq slack-prefer-current-team t)
-  ;; (setq alert-default-style 'libnotify)
-
   ;;org
   (with-eval-after-load 'org
     ;; Org general settings
@@ -582,7 +568,7 @@ With prefix argument, also display headlines without a TODO keyword."
  '(org-trello-current-prefix-keybinding "C-c o")
  '(package-selected-packages
    (quote
-    (yaml-mode helm-pydoc helm-css-scss org-trello frames-only-mode request-deferred deferred hy-mode anaconda-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode dash-functional cython-mode pythonic solarized-theme rainbow-mode exwm xelb slack emojify circe oauth2 websocket ht zerodark-theme nord-theme doom-themes easy-hugo org-projectile toml-mode racer pos-tip cargo rust-mode winum web-beautify org-category-capture org-mime livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc ghub let-alist coffee-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby phpunit phpcbf php-extras php-auto-yasnippets yasnippet drupal-mode php-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode haml-mode emmet-mode zeal-at-point org-caldav hide-comnt apropospriate-theme wgrep smex ivy-hydra counsel-projectile counsel swiper ivy uuidgen org org-download link-hint git-link eyebrowse evil-visual-mark-mode evil-unimpaired evil-ediff goto-chg undo-tree eshell-z dumb-jump f diminish column-enforce-mode xterm-color ws-butler window-numbering volatile-highlights vi-tilde-fringe vagrant-tramp vagrant toc-org spacemacs-theme spaceline powerline smooth-scrolling smeargle shell-pop restart-emacs ranger rainbow-delimiters popwin persp-mode pcre2el paradox hydra spinner page-break-lines orgit org-repo-todo org-present org-pomodoro alert log4e gntp org-plus-contrib org-bullets open-junk-file notmuch neotree multi-term move-text mmm-mode markdown-toc s markdown-mode magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-gitignore request helm-flx helm-descbinds helm-ag google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md flx-ido flx fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-args evil-anzu anzu eval-sexp-fu highlight eshell-prompt-extras esh-help elisp-slime-nav deft define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup quelpa package-build use-package which-key bind-key bind-map evil)))
+    (yaml-mode helm-pydoc helm-css-scss org-trello frames-only-mode request-deferred deferred hy-mode anaconda-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode dash-functional cython-mode pythonic solarized-theme rainbow-mode exwm xelb emojify circe oauth2 websocket ht zerodark-theme nord-theme doom-themes easy-hugo org-projectile toml-mode racer pos-tip cargo rust-mode winum web-beautify org-category-capture org-mime livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc ghub let-alist coffee-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby phpunit phpcbf php-extras php-auto-yasnippets yasnippet drupal-mode php-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode haml-mode emmet-mode zeal-at-point org-caldav hide-comnt apropospriate-theme wgrep smex ivy-hydra counsel-projectile counsel swiper ivy uuidgen org org-download link-hint git-link eyebrowse evil-visual-mark-mode evil-unimpaired evil-ediff goto-chg undo-tree eshell-z dumb-jump f diminish column-enforce-mode xterm-color ws-butler window-numbering volatile-highlights vi-tilde-fringe vagrant-tramp vagrant toc-org spacemacs-theme spaceline powerline smooth-scrolling smeargle shell-pop restart-emacs ranger rainbow-delimiters popwin persp-mode pcre2el paradox hydra spinner page-break-lines orgit org-repo-todo org-present org-pomodoro alert log4e gntp org-plus-contrib org-bullets open-junk-file notmuch neotree multi-term move-text mmm-mode markdown-toc s markdown-mode magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-gitignore request helm-flx helm-descbinds helm-ag google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md flx-ido flx fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-args evil-anzu anzu eval-sexp-fu highlight eshell-prompt-extras esh-help elisp-slime-nav deft define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup quelpa package-build use-package which-key bind-key bind-map evil)))
  '(paradox-github-token t)
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
