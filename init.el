@@ -343,7 +343,7 @@ you should place your code here."
 			                       (setq-local frame-title-format "%b - Code")
                              ))
   ;; git
-  (setq magit-repository-directories '("~/projects/"))
+  (setq magit-repository-directories '(("~/Projects/" . 1)))
 
   ;; zeal
   (spacemacs/set-leader-keys
